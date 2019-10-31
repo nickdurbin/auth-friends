@@ -14,14 +14,16 @@ const Nav = styled.nav`
 
 const NavLinks = styled.div`
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  width: 15%;
+  width: 75%;
 `
 
 const Logo = styled.h1`
   font-size: 1.6rem;
   font-weight: 600;
   color: white;
+  width: 100%;
 `;
 
 function NavBar() {
@@ -34,6 +36,9 @@ function NavBar() {
         </NavLink>
         <NavLink to='/login'>
           Login
+        </NavLink>
+        <NavLink to='/friends'>
+          Friends
         </NavLink>
       </NavLinks>
     </Nav>
