@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+import { axiosWithAuth } from '../../utils/axiosutils';
 
 
 function LoginForm(props) {
   const [userCredentials, setUserCredentials] = useState({
-    name: '',
-    age: '',
-    email: ''
+    username: '',
+    password: ''
   })
 
   const handleChanges = e => {
@@ -19,8 +18,9 @@ function LoginForm(props) {
     
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`/api/login`, userCredentials)
+    axiosWithAuth().post(`/api/login`, userCredentials)
       .then(res => {
+        console.log(res.data.token)
         localStorage.setItem('token', res.data.token);
         props.history.push('/home');
       })
@@ -32,9 +32,8 @@ function LoginForm(props) {
 
   const resetForm = () => {
     setUserCredentials({
-      name: '',
-      age: '',
-      email: ''
+      username: '',
+      password: ''
     })
   }
 
@@ -45,23 +44,16 @@ function LoginForm(props) {
         <hr />
         <input
           type="text"
-          name="name"
-          placeholder="Name"
-          value={userCredentials.name}
+          name="username"
+          placeholder="username"
+          value={userCredentials.username}
           onChange={handleChanges}
         />
         <input
-          type="text"
-          name="age"
-          placeholder="Age"
-          value={userCredentials.age}
-          onChange={handleChanges}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={userCredentials.email}
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={userCredentials.password}
           onChange={handleChanges}
         />
         <button className="addBtn btn" type="submit">
