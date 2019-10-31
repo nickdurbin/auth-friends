@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from '../../utils/axiosutils';
+import { axiosWithoutAuth } from '../../utils/axiosutils';
 
 
 function LoginForm(props) {
@@ -12,16 +12,16 @@ function LoginForm(props) {
     setUserCredentials({
       ...userCredentials,
       [e.target.name]: e.target.value
-    });
+    })
   };
 
     
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithAuth().post(`/api/login`, userCredentials)
+    axiosWithoutAuth()
+      .post(`/api/login`, userCredentials)
       .then(res => {
-        console.log(res.data.token)
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('token', JSON.stringify(res.data.token));
         props.history.push('/home');
       })
       .catch(err => {
