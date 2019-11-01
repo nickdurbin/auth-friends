@@ -19,9 +19,9 @@ function LoginForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithoutAuth()
-      .post(`/api/login`, userCredentials)
+      .post('/api/login', userCredentials)
       .then(res => {
-        localStorage.setItem('token', JSON.stringify(res.data.token));
+        localStorage.setItem("token", res.data.token);
         props.history.push('/home');
       })
       .catch(err => {
