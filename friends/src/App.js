@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NavBar from './components/navigation/NavBar';
 import LoginForm from './components/login/LoginForm';
 
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

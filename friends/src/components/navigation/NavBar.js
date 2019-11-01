@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { getToken } from '../../utils/axiosutils';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
@@ -26,7 +27,9 @@ const Logo = styled.h1`
   width: 100%;
 `;
 
-function NavBar() {
+function NavBar(props) {
+  const signedIn = getToken()
+
   return (
     <Nav className='navContainer'>
       <Logo>Friendz-Own</Logo>
@@ -34,12 +37,15 @@ function NavBar() {
         <NavLink to='/'>
           Home
         </NavLink>
-        <NavLink to='/login'>
+        {!signedIn && <NavLink to='/login'>
           Login
-        </NavLink>
-        <NavLink to='/friends'>
+        </NavLink>}
+        {signedIn && <NavLink to='/friends'>
           Friends
-        </NavLink>
+        </NavLink>}
+        {signedIn && <NavLink to='/login' onClick={() => {localStorage.removeItem('token')}}>
+          Logout
+        </NavLink>}
       </NavLinks>
     </Nav>
   )

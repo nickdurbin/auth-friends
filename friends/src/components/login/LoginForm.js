@@ -21,7 +21,8 @@ function LoginForm(props) {
     axiosWithoutAuth()
       .post('/api/login', userCredentials)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        console.log(res.data)
+        localStorage.setItem("token", res.data.payload);
         props.history.push('/home');
       })
       .catch(err => {
