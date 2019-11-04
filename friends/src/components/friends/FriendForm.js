@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { axiosWithAuth } from '../../utils/axiosutils';
 
 function FriendForm() {
   const [userCredentials, setUserCredentials] = useState({
-    username: '',
-    password: ''
+    id: '',
+    name: '',
+    age: '',
+    email: '',
   })
 
   const handleChanges = e => {
@@ -13,14 +16,12 @@ function FriendForm() {
     })
   };
 
-    
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithoutAuth()
-      .post('/api/login', userCredentials)
+      .post('/api/friends', userCredentials)
       .then(res => {
         console.log(res.data)
-        localStorage.setItem("token", res.data.payload);
         props.history.push('/home');
       })
       .catch(err => {
@@ -31,32 +32,40 @@ function FriendForm() {
 
   const resetForm = () => {
     setUserCredentials({
-      username: '',
-      password: ''
+      name: '',
+      age: '',
+      email: ''
     })
   }
 
   return (
     <div className='formContainer'>
       <form onSubmit={handleSubmit}>
-        <h1>Login Form</h1>
+        <h1>New Friend</h1>
         <hr />
         <input
           type="text"
-          name="username"
-          placeholder="username"
-          value={userCredentials.username}
+          name="name"
+          placeholder="Name"
+          value={userCredentials.name}
           onChange={handleChanges}
         />
         <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={userCredentials.password}
+          type="text"
+          name="age"
+          placeholder="Age"
+          value={userCredentials.age}
+          onChange={handleChanges}
+        />
+         <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={userCredentials.email}
           onChange={handleChanges}
         />
         <button className="addBtn btn" type="submit">
-          Login
+          Add
         </button>
       </form>
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import NavBar from './components/navigation/NavBar';
 import LoginForm from './components/login/LoginForm';
+import FriendForm from './components/friends/FriendForm;'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' render={(props) => <LoginForm {...props} /> } />
+        <PrivateRoute path='/friends' component={FriendForm} />
       </Switch>
     </div>
   );
