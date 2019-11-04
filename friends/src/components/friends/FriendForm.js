@@ -22,7 +22,6 @@ function FriendForm() {
       .post('/api/friends', userCredentials)
       .then(res => {
         console.log(res.data)
-        props.history.push('/home');
       })
       .catch(err => {
         return err.response
