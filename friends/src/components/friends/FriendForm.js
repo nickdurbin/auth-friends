@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { axiosWithAuth } from '../../utils/axiosutils';
 
 function FriendForm() {
@@ -18,7 +18,7 @@ function FriendForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosWithoutAuth()
+    axiosWithAuth()
       .post('/api/friends', userCredentials)
       .then(res => {
         console.log(res.data)

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import PrivateRoute from './components/auth/PrivateRoute';
 import NavBar from './components/navigation/NavBar';
 import LoginForm from './components/login/LoginForm';
-import FriendForm from './components/friends/FriendForm;'
+import FriendForm from './components/friends/FriendForm';
 
 function App() {
   return (
