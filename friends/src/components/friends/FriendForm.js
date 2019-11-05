@@ -68,7 +68,9 @@ function FriendForm() {
           Add
         </button>
       </form>
-      <Friend />
+      <div className='friendsList'>
+         <Friend />  
+      </div>
     </div>
   )
 }
