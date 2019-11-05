@@ -17,7 +17,8 @@ const NavLinks = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 20%;
+  width: 40%;
+  margin: 0 1%;
 `
 
 const Logo = styled.h1`

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../../utils/axiosutils';
+import Friend from './Friend';
 
 function FriendForm() {
   const [userCredentials, setUserCredentials] = useState({
@@ -67,6 +68,7 @@ function FriendForm() {
           Add
         </button>
       </form>
+      <Friend />
     </div>
   )
 }
