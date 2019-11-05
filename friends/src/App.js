@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import PrivateRoute from './components/auth/PrivateRoute';
 import NavBar from './components/navigation/NavBar';
 import LoginForm from './components/login/LoginForm';
-import ProtectedRoute from './components/auth/PrivateRoute';
-import Friend from './components/friends/Friend';
+import FriendForm from './components/friends/FriendForm';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path='/login' render={(props) => <LoginForm {...props} /> } />
-        <ProtectedRoute exact path="/friends" component={Friend} />
+        <PrivateRoute path='/friends' component={FriendForm} />
       </Switch>
     </div>
   );

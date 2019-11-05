@@ -8,7 +8,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 1% 0 3%;
+  padding: 0 3% 0 1%;
   background: black;
   color: white;
 `;
@@ -17,7 +17,8 @@ const NavLinks = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 20%;
+  width: 40%;
+  margin: 0 1%;
 `
 
 const Logo = styled.h1`
