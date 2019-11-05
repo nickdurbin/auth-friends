@@ -1,47 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../../utils/axiosutils';
+import React from 'react';
 
-function Friend() {
-  const [friendsList, setFriendsList] = useState([])
+function Friend({ friendsList, handleEdit, handleDelete }) {
 
-  useEffect(() => {
-
-    axiosWithAuth()
-      .get('/api/friends')
-      .then(res => {
-        console.log(res.data)
-        setFriendsList(res.data)
-      })
-      .catch(err => {
-        return err.response
-      })
-
-  }, [])
-
-  const handleDelete = (id) => {
-    axiosWithAuth()
-    .delete(`/api/friends/${id}`)
-    .then(res => {
-      console.log(res.data)
-      setFriendsList(res.data)
-    })
-    .catch(err => {
-      return err.response
-    })
-  }
-
-  const handleEdit = (id, friend) => {
-    axiosWithAuth()
-    .put(`/api/friends/${id}`, friend)
-    .then(res => {
-      console.log(res.data)
-      setFriendsList(res.data)
-    })
-    .catch(err => {
-      return err.response
-    })
-  }
- 
   return (
     <>
       {friendsList.map(friend => {

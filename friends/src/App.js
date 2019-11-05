@@ -6,6 +6,7 @@ import LoginForm from './components/login/LoginForm';
 import FriendForm from './components/friends/FriendForm';
 
 function App() {
+
   return (
     <div className="App">
       <NavBar />

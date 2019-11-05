@@ -23,7 +23,7 @@ function LoginForm(props) {
       .then(res => {
         console.log(res.data)
         localStorage.setItem("token", res.data.payload);
-        props.history.push('/home');
+        props.history.push('/friends');
       })
       .catch(err => {
         return err.response
@@ -49,6 +49,7 @@ function LoginForm(props) {
           placeholder="username"
           value={userCredentials.username}
           onChange={handleChanges}
+          required
         />
         <input
           type="password"
@@ -56,6 +57,7 @@ function LoginForm(props) {
           placeholder="Password"
           value={userCredentials.password}
           onChange={handleChanges}
+          required
         />
         <button className="addBtn btn" type="submit">
           Login

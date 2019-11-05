@@ -30,12 +30,13 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 40%;
   min-height: 500px;
   height: 100%;
-  margin: 5% auto;
+  margin: 6% auto;
   padding: 2%;
   box-shadow: 1px 3px 5px;
+  border-radius: 1em;
 }
 
 input {
@@ -92,7 +93,14 @@ button {
   min-width: 150px;
   width: 90%;
   height: 35px;
-  margin: 1% 0;
+  margin: 2% 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 1em;
+}
+
+button:hover {
+  transform: scale(1.02);
 }
 
 .navLinks a {
