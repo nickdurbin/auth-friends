@@ -17,6 +17,30 @@ function Friend() {
       })
 
   }, [])
+
+  const handleDelete = (id) => {
+    axiosWithAuth()
+    .delete(`/api/friends/${id}`)
+    .then(res => {
+      console.log(res.data)
+      setFriendsList(res.data)
+    })
+    .catch(err => {
+      return err.response
+    })
+  }
+
+  const handleEdit = (id, friend) => {
+    axiosWithAuth()
+    .put(`/api/friends/${id}`, friend)
+    .then(res => {
+      console.log(res.data)
+      setFriendsList(res.data)
+    })
+    .catch(err => {
+      return err.response
+    })
+  }
  
   return (
     <>
@@ -29,10 +53,10 @@ function Friend() {
               <h2>Email: {friend.email}</h2>
             </div>
             <div className='buttonContainer'>
-              <button className='editBtn'>
+              <button className='editBtn' onClick={() => handleEdit(friend.id, friend)}>
                 Edit
               </button>
-              <button className='deleteBtn'>
+              <button className='deleteBtn' onClick={() => handleDelete(friend.id)}>
                 Delete
               </button>
             </div>
